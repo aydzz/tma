@@ -10,10 +10,11 @@ const wpCommonConfig = {
         new HtmlWebpackPlugin({
             template: './src/index.html',
             filename:"index.html",
-            chunks: [
-                "index"
-            ],
             inject: 'body',
+            chunks: [
+                "main"
+            ],
+            minify: false
         }),
         // new HtmlWebpackPlugin({
         //     template: './src/hello.html',
@@ -28,23 +29,30 @@ const wpCommonConfig = {
         rules: [
             {
                 test:/\.html$/,
-                use:["html-loader"]
+                loader: "html-loader",
+                // use:["html-loader"],
+                options: {
+                    // Disables attributes processing
+                    sources: true
+                }
             },
             /**
              * This can be ommitted at the time of writing ( html-loader works with images )
              * - Disabled for now, duplicates the emission of static files
+             * - deprecated in webpack 5
              */
             // {
-            //     test: /\.(svg|png|jpg|gif)$/,
+            //     test:/\.svg$/,
             //     use:{
             //         loader: "file-loader",
             //         options: {
-            //             name: "[name].[hash].[ext]",
+            //             name: "[name].[ext]",
             //             outputPath: "static"
             //         }
                     
             //     }
-            // }
+            // },
+            
         ],
     }
      

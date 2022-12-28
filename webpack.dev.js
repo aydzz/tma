@@ -12,7 +12,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const wpDevConfig = merge(wpCommonConfig,{
     mode: "development",
     output:{
-        filename: '[name].js',
+        filename: '[name].[contenthash].js',
         path: path.resolve(__dirname, "dist"),
         clean: true,
     }

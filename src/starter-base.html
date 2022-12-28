@@ -50,8 +50,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="/" class="brand-link bg-white">
-      <img src="assets/logo.svg" alt="adzz.tma Logo" class="brand-image img-circle elevation-3 p-2 bg-black" style="opacity: 1">
+    <a href="/" class="brand-link">
+      <img src="assets/logo.svg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3 p-2 bg-black" style="opacity: .8">
       <span class="brand-text font-weight-light">adzz.</span><strong>tma</strong>
     </a>
 
@@ -62,36 +62,35 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item">
-            <a href="/" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Dashboard
-              </p>
-            </a>
-          </li>
           <li class="nav-item menu-open">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Activity
+                Starter Pages
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="add-activity.html" class="nav-link">
+                <a href="#" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Add Activity</p>
+                  <p>Active Page</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Inactive Page</p>
                 </a>
               </li>
             </ul>
           </li>
           <li class="nav-item">
-            <a href="users.html" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
               <p>
-                Users
+                Simple Link
+                <span class="right badge badge-danger">New</span>
               </p>
             </a>
           </li>
@@ -109,7 +108,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
+            <h1 class="m-0">Starter Page</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Starter Page</li>
+            </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -118,100 +123,61 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Main content -->
     <div class="content">
-      <div class="row">
-        <div class="col-12 col-sm-6 col-md-3">
-          <div class="info-box">
-            <span class="info-box-icon bg-primary elevation-1"><i class="fas fa-briefcase"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Projects</span>
-              <span class="info-box-number">
-                10
-                <small>%</small>
-              </span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <div class="col-12 col-sm-6 col-md-3">
-          <div class="info-box">
-            <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-stopwatch"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Active Hours</span>
-              <span class="info-box-number">
-                10
-                <small>%</small>
-              </span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <div class="col-12 col-sm-6 col-md-3">
-          <div class="info-box">
-            <span class="info-box-icon bg-success elevation-1"><i class="fas fa-clipboard-check"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Task Done</span>
-              <span class="info-box-number">
-                10
-                <small>%</small>
-              </span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <div class="col-12 col-sm-6 col-md-3">
-          <div class="info-box">
-            <span class="info-box-icon bg-info elevation-1"><i class="fas fa-user-clock"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Productivity</span>
-              <span class="info-box-number">
-                10
-                <small>%</small>
-              </span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-      </div>
       <div class="container-fluid">
         <div class="row">
-          <div class="col-lg-12">
-            <div class="card">
-              <div class="card-header">
-                <h5 class="m-0">Activity Chart</h5>
-              </div>
-              <div class="card-body">
-              </div>
-            </div>
-          </div>
           <div class="col-lg-6">
             <div class="card">
-              <div class="card-header">
-                <h5 class="m-0">Projects</h5>
-              </div>
               <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up the bulk of the card's
+                  content.
+                </p>
+
+                <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a>
               </div>
             </div>
-          </div>
-          <div class="col-lg-6">
+
             <div class="card card-primary card-outline">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up the bulk of the card's
+                  content.
+                </p>
+                <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a>
+              </div>
+            </div><!-- /.card -->
+          </div>
+          <!-- /.col-md-6 -->
+          <div class="col-lg-6">
+            <div class="card">
               <div class="card-header">
-                <h5 class="m-0">Project Items</h5>
+                <h5 class="m-0">Featured</h5>
               </div>
               <div class="card-body">
                 <h6 class="card-title">Special title treatment</h6>
 
                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Add Activity</a>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
               </div>
-            </div> 
+            </div>
+
+            <div class="card card-primary card-outline">
+              <div class="card-header">
+                <h5 class="m-0">Featured</h5>
+              </div>
+              <div class="card-body">
+                <h6 class="card-title">Special title treatment</h6>
+
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
           </div>
           <!-- /.col-md-6 -->
         </div>
