@@ -1,0 +1,15 @@
+
+/**Remove Free account Message **/
+div[id*="newcb"]{
+    display: none !important;
+}
+
+div.highcharts-container{
+    width: 100% !important;
+}
+svg.highcharts-root{
+   width: 100% !important; 
+}
+
+
+  

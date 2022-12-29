@@ -1,0 +1,24 @@
+{
+    "data": [
+        {
+            "ID": 1,
+            "Category": "Project Management",
+            "Description": ""
+        },
+        {
+            "ID": 2,
+            "Category": "Development",
+            "Description": ""
+        },
+        {
+            "ID": 3,
+            "Category": "Quality Assurance",
+            "Description": ""
+        },
+        {
+            "ID": 4,
+            "Category": "Documentation",
+            "Description": ""
+        }
+    ]
+}
