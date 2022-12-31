@@ -1,5 +1,5 @@
 import Project from "../../base/db/models/Project.js"
-import { stringToHTML } from "../../base/Functions.js";
+import projectStatusRepo from "../../base/db/local/ProjectStatusRepo.js";
 import $ from "jquery";
 /**
  * 
@@ -28,6 +28,7 @@ export default function projectsTable(selector,array){
  * @returns 
  */
 function tableRow(project){
+    console.log(project.logo);
     const htmlStr = `
     <tr>
         <td>
@@ -38,6 +39,9 @@ function tableRow(project){
         <td>
             <img src="${project.logo ? project.logo : `https://avatars.dicebear.com/api/identicon/${project.rid}.svg`}" alt="Project logo" class="img-circle img-size-32 mr-2 shadow-sm">
             ${project.title}
+        </td>
+        <td>
+            ${project.statusID ? projectStatusRepo.get(project.statusID).status : ``}
         </td>
         <td>
             ${project.createdDate ? new Date(project.createdDate).toLocaleDateString() : ``}

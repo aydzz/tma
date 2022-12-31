@@ -1,10 +1,24 @@
 import HtmlWebpackPlugin from "html-webpack-plugin";
+import { fileURLToPath } from 'url';
+import path from 'path';
+import { dirname } from 'path';
 
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const wpCommonConfig = {
     entry: {
         main: "./src/index.js",
         // vendor: "./src/vendor.js"
+    },
+    resolve: {
+        enforceExtension: false,
+        extensions: ['.js', '...'],
+        // alias: {
+        //     sample1: path.resolve(__dirname, 'src/sample1/'),
+        //     Sample2: path.resolve(__dirname, 'src/sample2/'),
+        // },
+        mainFiles: ['index'],
     },
     plugins:[
         new HtmlWebpackPlugin({

@@ -1,20 +1,10 @@
-import application from "./base/index.js";
+//@ts-check
+
+import application, { Application } from "./base/index.js";
 import DataPage from "./base/DataPage/index.js";
 import projectsTable from "./components/Home/ProjectsTable.js";
 import Project from "./base/db/models/Project.js";
-
-
-// const mainTablesDP = new DataPage(
-//     application.accountID,
-//     application.appkeyPrefix,
-//     "9edb03a3fb724456806c",
-//     {
-//         deploy: true,
-//         containerSel: "#cb-main-tables",
-//         params: ""
-//     }
-    
-// );
+import TABLE_NAMES from "./base/enums/TableNames.js";
 
 const activityChartDP = new DataPage(
     application.accountID,
@@ -27,10 +17,29 @@ const activityChartDP = new DataPage(
     }
     
 );
+/**
+ * Home Page ( Index ) app ready effects
+ * @param {Application} application 
+ */
+const applicationReadyHandler = function(application){
+    /**
+     * Render Projects Table Card
+     */
+    const projectList = application.mainDataRawAll["data"].filter(record =>{
+        console.log(Project.fromRecord(record).id);
+        if(Project.fromRecord(record).id){
+            return true;
+        }
+        return false;
+    }).map(record =>{
+        return Project.fromRecord(record);
+    })
+    projectsTable("table[data-src='project-list'] > tbody", projectList);
 
-const projectList = [
-    new Project("1","DDA12G35","Project Title 1","","Sample Description","","12/25/2022 02:33:59","","",""),
-    new Project("2","ASW31234","Project Title 2","","Sample Description","","12/25/2022 02:33:59","","",""),
-    new Project("3","QWESF12A","Project Title 3","","Sample Description","","12/25/2022 02:33:59","","","")
-]
-projectsTable("table[data-src='project-list'] > tbody", projectList);
+    /**
+     * Render Counts in InfoCards
+     */
+    document.querySelector("[data-src='projects']").textContent = projectList.length;
+}
+
+application.on("appready", applicationReadyHandler)

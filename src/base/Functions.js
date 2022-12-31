@@ -10,3 +10,15 @@ export const stringToHTML = function (str) {
 	var doc = parser.parseFromString(str, 'text/html');
 	return doc;
 };
+
+export const stringToNumber = function(str){
+	if(str){
+		if(Number.isNaN(Number(str))){
+			return new Error("Convert String is not a number");
+		}else{
+			return Number(str);
+		}
+	}
+	return null;
+	
+}

@@ -19,14 +19,32 @@ export default class DataPage{
         this.deploy = this.deploy.bind(this);
         this.refresh = this.refresh.bind(this);
         this.wait = this.wait.bind(this);
+        this.getDPManagerInstance_1 = this.getDPManagerInstance.bind(this);
   
         if(this.options.deploy){
             console.log("deploying Datapage")
             this.deploy(this.options.containerSel, this.options.params);
         }
     }
-    static getDataPageManagerInstance(appKey){
-        return window.dataPageManagerObj.dataPages[appKey];
+    static getDPManagerInstance(appKey){
+        for (var key in window.dataPageManagerObj.dataPages) {
+            if (key.search(appKey) != -1) {
+                    return window.dataPageManagerObj.dataPages[key]
+            }
+        }
+        return;
+    }
+    getDPManagerInstance(){
+        const instance = this;
+        for (var key in window.dataPageManagerObj.dataPages) {
+            if (key.search(instance.appKeyPrefix + this.appKey) != -1) {
+                    return window.dataPageManagerObj.dataPages[key]
+            }
+        }
+        return;
+    }
+    getDPObjectInstance(){
+        return this.getDPManagerInstance()["dataPageObj"];
     }
 
     deploy(containerSel,paramString){
@@ -50,6 +68,21 @@ export default class DataPage{
         return false;
     }
     wait(callback){
-        return callback(this);
+        const instance = this;
+        document.addEventListener("DataPageReady",function(e){
+            if(e.detail.appKey === instance.appKeyPrefix + instance.appKey){
+                callback(instance, e);
+            }
+        },{
+            once: true
+        });
+    }
+    on(event, callback){
+        const instance = this;
+        if(event === "ready"){
+            document.addEventListener("DataPageReady", function(e){
+                callback(instance,e);
+            })
+        }
     }
 }
