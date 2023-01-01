@@ -1,5 +1,5 @@
 import Project from "../../base/db/models/Project.js"
-import projectStatusRepo from "../../base/db/local/ProjectStatusRepo.js";
+import projectStatusRepo from "../../base/db/local/dal/ProjectStatusRepo.js";
 import $ from "jquery";
 /**
  * 

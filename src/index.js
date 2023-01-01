@@ -6,6 +6,9 @@ import projectsTable from "./components/Home/ProjectsTable.js";
 import Project from "./base/db/models/Project.js";
 import TABLE_NAMES from "./base/enums/TableNames.js";
 
+/**
+ * DataPage Deployments
+ */
 const activityChartDP = new DataPage(
     application.accountID,
     application.appkeyPrefix,
@@ -17,6 +20,17 @@ const activityChartDP = new DataPage(
         getParamsOnInit:``
     }
     
+);
+const activitiesDataDP = new DataPage(
+    application.accountID,
+    application.appkeyPrefix,
+    "4b23f1b28daf413d9732",
+    {
+        deploy: true,
+        containerSel: "#cb-activities",
+        params: `` ,
+        getParamsOnInit:``
+    }
 );
 
 /**
@@ -45,6 +59,16 @@ document.querySelector(application.settings.home.activityChartRange.selector).ad
         activityChartDP.refresh();
 
         document.querySelector("[data-src='activity-previous-days']").textContent = document.querySelector(application.settings.home.activityChartRange.selector).value;
+    }
+});
+
+
+/**
+ * For Rendering Logs Charts
+ */
+document.addEventListener("DataPageReady",function(e){
+    if(e.detail.appKey === activitiesDataDP.appKeyPrefix + activitiesDataDP.appKey){
+        console.log(window.activities);
     }
 })
 
