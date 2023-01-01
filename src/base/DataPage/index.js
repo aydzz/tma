@@ -1,7 +1,8 @@
 const DEFAULT_OPTIONS = {
     deploy: false,
     containerSel: null,
-    params: null
+    params: null,
+    getParamsOnInit: null
 }
 export default class DataPage{
     constructor(accountID, appKeyPrefix, appKey, options=DEFAULT_OPTIONS){
@@ -15,15 +16,21 @@ export default class DataPage{
             ...DEFAULT_OPTIONS,
             ...options
         }
+        this.src = this.cbDataPagePrefix + this.appKey + '/emb'; //deployment method is always script tag
+
         //Method Binds
         this.deploy = this.deploy.bind(this);
         this.refresh = this.refresh.bind(this);
         this.wait = this.wait.bind(this);
-        this.getDPManagerInstance_1 = this.getDPManagerInstance.bind(this);
+        this.getDPManagerInstance = this.getDPManagerInstance.bind(this);
   
         if(this.options.deploy){
-            console.log("deploying Datapage")
+            console.log("deploying Datapage");
+            if(this.options.getParamsOnInit){
+                
+            }
             this.deploy(this.options.containerSel, this.options.params);
+            
         }
     }
     static getDPManagerInstance(appKey){
@@ -46,6 +53,22 @@ export default class DataPage{
     getDPObjectInstance(){
         return this.getDPManagerInstance()["dataPageObj"];
     }
+    /**
+     * 
+     * @returns {HTMLScriptElement}
+     */
+    getScriptElement(){
+       if(this.options.deploy){
+            if(this.options.containerSel){
+                const scriptEl = document.querySelector(`${this.options.containerSel} > script`);
+                return scriptEl;
+            }
+       }
+       return;
+    }
+    updateDeploymentParams(paramString){
+        this.getScriptElement().setAttribute("src",(this.src + paramString));
+    }
 
     deploy(containerSel,paramString){
         let params = paramString || '';
@@ -60,7 +83,7 @@ export default class DataPage{
     }
     refresh(){
         for (let key in window.dataPageManagerObj.dataPages) {
-            if (key.search(this.cbDataPagePrefix + this.appKey) != -1) {
+            if (key.search(this.appKeyPrefix + this.appKey) != -1) {
                 window.dataPageManagerObj.dataPages[key].refresh();
                 return true;
             }
@@ -79,7 +102,7 @@ export default class DataPage{
     }
     on(event, callback){
         const instance = this;
-        if(event === "ready"){
+        if(event === "DataPageReady"){
             document.addEventListener("DataPageReady", function(e){
                 callback(instance,e);
             })

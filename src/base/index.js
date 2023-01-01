@@ -6,14 +6,13 @@
 
 import DataPage from "./DataPage/index.js";
 import logger from "./Logger.js";
-import Project from "./db/models/Project.js";
 
 const ACCOUNT_ID = "c1hbp155";
 const APPKEY_PREFIX = "72d1b000";
 const LOGOUT_LINK = `https://${ACCOUNT_ID}.caspio.com/folderlogout"`;
 const CURRENT_PAGE = window.location.pathname;
 
-const MAIN_TABLES_DP = "9edb03a3fb724456806c"
+const MAIN_TABLES_DP = "9edb03a3fb724456806c";
 
 export class Application{
    constructor(){
@@ -28,6 +27,14 @@ export class Application{
             mainTablesLoaded: false,
         }
         this.appReady = false;
+        this.settings = {
+            home:{
+                activityChartRange: {
+                        selector: "select[data-settings='chart-range']",
+                        value: document.querySelector("select[data-settings='chart-range']").value
+                    }
+            }
+        }
 
         //bindings
         this._initDispatcher = this._initDispatcher.bind(this);

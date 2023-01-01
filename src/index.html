@@ -196,7 +196,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </div>
             </div>
           </div>
-          <div class="col-lg-6">
+          <div class="col-lg-8 ">
             <div class="card">
               <div class="card-header border-0">
                 <h3 class="card-title"><i class="fas fa-briefcase"></i> Projects</h3>
@@ -209,7 +209,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <th>Project</th>
                     <th>Status</th>
                     <th>Created Date</th>
-                    <th>Details</th>
+                    <th>Link</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -223,7 +223,39 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </div>
             </div>
           </div>
-          <div class="col-lg-6">
+          <div class="col-lg-4">
+            <div class="info-box mb-3 bg-light">
+              <span class="info-box-icon"><i class="fas fa-tag"></i></span>
+              <div class="info-box-content">
+                <span class="info-box-text">Today's Log</span>
+                <span class="info-box-number">0 <small>minutes</small></span>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Project Logs</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <!-- <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button> -->
+                </div>
+              </div>
+              <div class="card-body" style="display: block;"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                <canvas id="pieChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 764px;" width="764" height="250" class="chartjs-render-monitor"></canvas>
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer">
+                <span class="float-right text-sm text-black-50">Logs from the past <strong data-src="activity-previous-days">0</strong> days</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-12">
             <div class="card card-primary card-outline">
               <div class="card-header">
                 <h5 class="m-0">Project Items</h5>
@@ -236,7 +268,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </div>
             </div> 
           </div>
-          <!-- /.col-md-6 -->
+          
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -249,8 +281,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
     <div class="p-3">
-      <h5>Title</h5>
-      <p>Sidebar content</p>
+      <h5>Application Settings</h5>
+      <hr>
+      <div class="mb-4"><input type="checkbox" value="1" class="mr-1"><span>Dark Mode</span></div>
+      <div>
+        <h6>Activity Chart Range</h6>
+        <div class="form-group">
+          <!-- <label>Activity Chart Range</label> -->
+          <select class="form-control form-control-sm" data-settings="chart-range">
+            <option value=30 selected>Past 30 Days</option>
+            <option value=60>Past 60 Days</option>
+            <option value=90>Past 90 Days</option>
+          </select>
+        </div>
+      </div>
     </div>
   </aside>
   <!-- /.control-sidebar -->

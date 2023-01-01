@@ -35,12 +35,14 @@ class ItemTypeRepo{
         });
     }
     get(id){
-        return this.getAll().filter((itemType,i,arr) => {
+        const one =  this.getAll().filter((itemType,i,arr) => {
             if(itemType.id === id){
                 return true;
             }
             return false;
-        })
+        });
+
+        return one[0];
     }
 }
 

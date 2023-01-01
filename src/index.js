@@ -13,10 +13,41 @@ const activityChartDP = new DataPage(
     {
         deploy: true,
         containerSel: "#cb-activity-chart",
-        params: ""
+        params: `` ,
+        getParamsOnInit:``
     }
     
 );
+
+/**
+ * Sets default daysBefore for Activity Chart DataPage
+ * - Take note that this causes the DP to load twice the first time ( so this is a subject for optimization or workaround )
+ * - For now will leave this as is.
+ */
+activityChartDP.on("DataPageReady",function(datapage,e){
+    if(!activityChartDP.getDPObjectInstance().clientQueryString){
+        //@ts-ignore
+        activityChartDP.getDPObjectInstance().clientQueryString = `daysBefore=${document.querySelector(application.settings.home.activityChartRange.selector).value}`
+        activityChartDP.refresh();
+    }
+});
+
+
+document.querySelector(application.settings.home.activityChartRange.selector).addEventListener("change",function(e){
+    //Change getParameter for Activity Chart DP when App Settings is changed.
+    if(activityChartDP.getDPObjectInstance()){
+        //@ts-ignore
+        activityChartDP.getDPObjectInstance().clientQueryString = `daysBefore=${document.querySelector(application.settings.home.activityChartRange.selector).value}` 
+            
+        //@ts-ignore
+        // activityChartDP.getScriptElement().setAttribute("src",  activityChartDP.src + `?daysBefore=${document.querySelector(application.settings.home.activityChartRange.selector).value}`)
+
+        activityChartDP.refresh();
+
+        document.querySelector("[data-src='activity-previous-days']").textContent = document.querySelector(application.settings.home.activityChartRange.selector).value;
+    }
+})
+
 /**
  * Home Page ( Index ) app ready effects
  * @param {Application} application 
@@ -40,6 +71,8 @@ const applicationReadyHandler = function(application){
      * Render Counts in InfoCards
      */
     document.querySelector("[data-src='projects']").textContent = projectList.length;
+    document.querySelector("[data-src='activity-previous-days']").textContent = document.querySelector(application.settings.home.activityChartRange.selector).value;
+    
 }
 
 application.on("appready", applicationReadyHandler)

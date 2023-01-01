@@ -54,5 +54,7 @@ PM_Iteration_Last_Updated_Date: "[@field:PM_Iteration_Last_Updated_Date]",
 PM_Iteration_Created_By_User_ID: "[@field:PM_Iteration_Created_By_User_ID]",
 PM_Iteration_Last_Updated_By_User_ID: "[@field:PM_Iteration_Last_Updated_By_User_ID]",
 PM_Project_Logo: "[@field:PM_Project_Logo/]",
-PM_Project_Status_ID: "[@field:PM_Project_Status_ID]"
+PM_Project_Status_ID: "[@field:PM_Project_Status_ID]",
+PM_Project_Link: "[@field:PM_Project_Link]",
+PM_Project_Visibility_ID: "[@field:PM_Project_Visibility_ID]"
 }

@@ -32,12 +32,14 @@ class ItemStatusRepo{
         });
     }
     get(id){
-        return this.getAll().filter((itemStatus,i,arr) => {
+        const one = this.getAll().filter((itemStatus,i,arr) => {
             if(itemStatus.id === id){
                 return true;
             }
             return false;
         })
+
+        return one[0];
     }
 }
 

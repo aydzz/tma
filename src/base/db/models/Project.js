@@ -16,7 +16,7 @@ export default class Project{
      * @param {String} createdBy
      * @param {String} lastUpdatedBy
      */
-    constructor(id,rid,title,logo,description,colorHex,statusID,createdDate,lastUpdatedDate, createdBy, lastUpdatedBy){
+    constructor(id,rid,title,logo,description,colorHex,link,statusID,visibilityID,createdDate,lastUpdatedDate, createdBy, lastUpdatedBy){
         //do something here...
         this.id = stringToNumber(id) ;
         this.rid = rid;
@@ -24,7 +24,9 @@ export default class Project{
         this.logo = logo;
         this.description = description;
         this.colorHex = colorHex;
+        this.link = link;
         this.statusID = stringToNumber(statusID)
+        this.visibilityID = stringToNumber(statusID)
         this.createdDate = createdDate;
         this.lastUpdatedDate = lastUpdatedDate;
         this.createdBy = createdBy;
@@ -45,7 +47,9 @@ export default class Project{
             record[TABLE_NAME + "_" + "Logo"],
             record[TABLE_NAME + "_" + "Description"],
             record[TABLE_NAME + "_" + "Color_Hex"],
+            record[TABLE_NAME + "_" + "Link"],
             record[TABLE_NAME + "_" + "Status_ID"],
+            record[TABLE_NAME + "_" + "Visibility_ID"],
             record[TABLE_NAME + "_" + "Created_Date"],
             record[TABLE_NAME + "_" + "Last_Updated_Date"],
             record[TABLE_NAME + "_" + "Created_By"],

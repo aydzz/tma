@@ -1,30 +1,11 @@
-import Project from "../../base/db/models/Project.js"
-import projectStatusRepo from "../../base/db/local/ProjectStatusRepo.js";
-import $ from "jquery";
-/**
- * 
- * @param {String} selector 
- * @param {Array<Project>} array 
- */
-export default function projectsTable(selector,array){
-    if(array.length){
-        $(selector).html("");
-    }
-    let htmlString = "";
-    array.forEach(function(project,i,arr){
-        htmlString = htmlString + tableRow(project);
-    });
-    console.log($.parseHTML(htmlString));
-    $(selector).append($.parseHTML(htmlString));
-    // document.querySelector(selector).append(
-    //     // jq.parseHTML(htmlString)
-    //     // stringToHTML(htmlString)
-    // )
-    return htmlString;
+
+export default function itemsTable(selector, array){  
+
 }
+
 /**
  * 
- * @param {Project} project 
+ * @param {Item} project 
  * @returns 
  */
 function tableRow(project){

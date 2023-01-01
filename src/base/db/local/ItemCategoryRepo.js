@@ -32,12 +32,13 @@ class ItemCategoryRepo{
         });
     }
     get(id){
-        return this.getAll().filter((itemCategory,i,arr) => {
+        const one = this.getAll().filter((itemCategory,i,arr) => {
             if(itemCategory.id === id){
                 return true;
             }
             return false;
         })
+        return one[0];
     }
 }
 
