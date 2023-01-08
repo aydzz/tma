@@ -1,3 +1,5 @@
+import logger from "../Logger.js";
+
 const DEFAULT_OPTIONS = {
     deploy: false,
     containerSel: null,
@@ -25,7 +27,7 @@ export default class DataPage{
         this.getDPManagerInstance = this.getDPManagerInstance.bind(this);
   
         if(this.options.deploy){
-            console.log("deploying Datapage");
+            logger.log("Deploying DataPage: " + this.appKeyPrefix + this.appKey);
             if(this.options.getParamsOnInit){
                 
             }

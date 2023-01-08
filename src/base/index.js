@@ -6,6 +6,7 @@
 
 import DataPage from "./DataPage/index.js";
 import logger from "./Logger.js";
+import projectRepo from "./db/local/dal/ProjectRepo.js";
 
 const ACCOUNT_ID = "c1hbp155";
 const APPKEY_PREFIX = "72d1b000";
@@ -46,6 +47,7 @@ export class Application{
                 if(e.detail.appKey ===  instance.appkeyPrefix + MAIN_TABLES_DP && !instance.appReady){
                     if(window.mainDataRawAll){
                         instance.mainDataRawAll = window.mainDataRawAll;
+                        projectRepo.setRawData(mainDataRawAll)
                     }else{
                         throw new Error("Main Data was not loaded correctly.");
                     }
@@ -113,10 +115,5 @@ document.addEventListener("appready",function(e){
 document.addEventListener("appstatechange",function(e){
     logger.log("Application State Changed");
 });
-
-mainTablesDP.on("ready",function(dp,e){
-    console.log(dp.getDPObjectInstance());
-})
-
 
 export  default application;

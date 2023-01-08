@@ -1,17 +1,53 @@
+import Activity from "../../models/Activity.js";
+
 class ActivityRepo{
     constructor(){
-       this.rawData = null;
-       this.data = null;
-
+       this.rawData = [];
+       /**@type {Array<Activity>} */
+       this.data = [];
     }
+    /**
+     * 
+     * @param {Array<Object>} data 
+     */
     setRawData(data){
         this.rawData = data;
     }
+    /**
+     * 
+     * @param {Array<Object>} data 
+     */
+    setData(data){
+        const temp = []
+        data.forEach((record)=>{
+            temp.push(Activity.fromRecord(record));
+        })
+        
+        this.data = temp.filter(
+            /**@param {Activity} activity */
+            function(activity){
+                if(activity.rid){
+                    return true;
+                }
+                return false;
+            }
+        )
+        return this.data;
+    }
     getAll(){
-       
+       return this.data;
     }
     get(id){
-      
+        const one =  this.getAll().filter((activity,i,arr) => {
+            if(activity.id === id){
+                return true;
+            }
+            return false;
+        });
+
+        //handlers here...
+
+        return one[0];
     }
 }
 

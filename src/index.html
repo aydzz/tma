@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Home</title>
+  <title>Dashboard</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"/>
@@ -245,7 +245,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </button> -->
                 </div>
               </div>
-              <div class="card-body" style="display: block;"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+              <div class="card-body" style="display: block;">
+                <div class="chartjs-size-monitor">
+                  <div class="chartjs-size-monitor-expand">
+                    <div class="">
+                    </div>
+                  </div>
+                  <div class="chartjs-size-monitor-shrink">
+                    <div class="">
+
+                    </div>
+                  </div>
+                </div>
                 <canvas id="pieChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 764px;" width="764" height="250" class="chartjs-render-monitor"></canvas>
               </div>
               <!-- /.card-body -->
@@ -258,13 +269,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <div class="col-lg-12">
             <div class="card card-primary card-outline">
               <div class="card-header">
-                <h5 class="m-0">Project Items</h5>
+                <h5 class="m-0">Project Activities</h5>
               </div>
               <div class="card-body">
-                <h6 class="card-title">Special title treatment</h6>
+                <div class="d-block w-100" data-dptype="data" id="cb-activities">
 
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Add Activity</a>
+                </div>
               </div>
             </div> 
           </div>
@@ -311,9 +321,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </div>
 <!-- ./wrapper -->
 <div class="d-none" data-dptype="data" id="cb-main-tables">
-
-</div>
-<div class="d-none" data-dptype="data" id="cb-activities">
 
 </div>
 

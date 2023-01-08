@@ -14,7 +14,6 @@ export default function projectsTable(selector,array){
     array.forEach(function(project,i,arr){
         htmlString = htmlString + tableRow(project);
     });
-    console.log($.parseHTML(htmlString));
     $(selector).append($.parseHTML(htmlString));
     // document.querySelector(selector).append(
     //     // jq.parseHTML(htmlString)
@@ -28,7 +27,6 @@ export default function projectsTable(selector,array){
  * @returns 
  */
 function tableRow(project){
-    console.log(project.logo);
     const htmlStr = `
     <tr>
         <td>
