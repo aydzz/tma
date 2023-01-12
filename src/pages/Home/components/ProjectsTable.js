@@ -1,5 +1,5 @@
-import Project from "../../base/db/models/Project.js"
-import projectStatusRepo from "../../base/db/local/dal/ProjectStatusRepo.js";
+import Project from "../../../base/db/models/Project.js"
+import projectStatusRepo from "../../../base/db/local/dal/ProjectStatusRepo.js";
 import $ from "jquery";
 /**
  * 
@@ -27,6 +27,8 @@ export default function projectsTable(selector,array){
  * @returns 
  */
 function tableRow(project){
+    const status = projectStatusRepo.get(project.statusID).status
+    const spanBG = (status === "In Progress" ? "primary" : status === "On Hold" ? "warning" :"secondary")
     const htmlStr = `
     <tr>
         <td>
@@ -39,7 +41,7 @@ function tableRow(project){
             ${project.title}
         </td>
         <td>
-            ${project.statusID ? projectStatusRepo.get(project.statusID).status : ``}
+            <span class="badge badge-${spanBG}">${project.statusID ? projectStatusRepo.get(project.statusID).status : ``}</span>
         </td>
         <td>
             ${project.createdDate ? new Date(project.createdDate).toLocaleDateString() : ``}

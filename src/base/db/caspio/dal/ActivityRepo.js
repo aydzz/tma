@@ -1,6 +1,7 @@
+import moment from "moment";
 import Activity from "../../models/Activity.js";
 
-class ActivityRepo{
+export class ActivityRepo{
     constructor(){
        this.rawData = [];
        /**@type {Array<Activity>} */
@@ -35,7 +36,15 @@ class ActivityRepo{
         return this.data;
     }
     getAll(){
-       return this.data;
+       return this.data.sort(function(a, b){
+            if(moment(a.date).isAfter(b.date)){
+                return -1
+            }else if(moment(a.date).isBefore(b.date)){
+                return 1
+            }else{
+                return 0;
+            }
+       });
     }
     get(id){
         const one =  this.getAll().filter((activity,i,arr) => {

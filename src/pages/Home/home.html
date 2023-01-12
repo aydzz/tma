@@ -16,7 +16,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Theme style -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css"/>
   <!--- Application styling-->
-  <link rel="stylesheet" href="./assets/css/application.css"/>
+  <link rel="stylesheet" href="../../assets/css/application.css"/>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -53,7 +53,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="/" class="brand-link bg-white">
-      <img src="assets/logo.svg" alt="adzz.tma Logo" class="brand-image img-circle elevation-3 p-2 bg-black" style="opacity: 1">
+      <img src="./../../assets/logo.svg" alt="adzz.tma Logo" class="brand-image img-circle elevation-3 p-2 bg-black" style="opacity: 1">
       <span class="brand-text font-weight-light">adzz.</span><strong>tma</strong>
     </a>
 
@@ -82,20 +82,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="add-activity.html" class="nav-link">
+                <a href="activity.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Activity</p>
                 </a>
               </li>
             </ul>
-          </li>
-          <li class="nav-item">
-            <a href="users.html" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-                Users
-              </p>
-            </a>
           </li>
         </ul>
       </nav>
@@ -121,7 +113,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Main content -->
     <div class="content">
       <div class="row">
-        <div class="col-12 col-sm-6 col-md-3">
+        <div class="col-12 col-sm-6 col-md-6">
           <div class="info-box">
             <span class="info-box-icon bg-primary elevation-1"><i class="fas fa-briefcase"></i></span>
 
@@ -136,14 +128,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </div>
           <!-- /.info-box -->
         </div>
-        <div class="col-12 col-sm-6 col-md-3">
+        <div class="col-12 col-sm-6 col-md-6">
           <div class="info-box">
             <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-stopwatch"></i></span>
 
             <div class="info-box-content">
               <span class="info-box-text">Active Hours</span>
               <span class="info-box-number" data-src="active-hours">
-                0.00
+                <span name="active-hours-value">0.00</span>
                 <small>hours</small>
               </span>
             </div>
@@ -151,7 +143,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </div>
           <!-- /.info-box -->
         </div>
-        <div class="col-12 col-sm-6 col-md-3">
+        <!-- <div class="col-12 col-sm-6 col-md-3">
           <div class="info-box">
             <span class="info-box-icon bg-success elevation-1"><i class="fas fa-clipboard-check"></i></span>
 
@@ -162,11 +154,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <small>items</small>
               </span>
             </div>
-            <!-- /.info-box-content -->
           </div>
-          <!-- /.info-box -->
-        </div>
-        <div class="col-12 col-sm-6 col-md-3">
+        </div> -->
+        <!-- <div class="col-12 col-sm-6 col-md-3">
           <div class="info-box">
             <span class="info-box-icon bg-info elevation-1"><i class="fas fa-user-clock"></i></span>
 
@@ -177,8 +167,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <small></small>
               </span>
             </div>
-            <!-- /.info-box-content -->
-          </div>
+          </div> -->
           <!-- /.info-box -->
         </div>
       </div>
@@ -198,7 +187,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </div>
           <div class="col-lg-8 ">
             <div class="card">
-              <div class="card-header border-0">
+              <div class="card-header">
                 <h3 class="card-title"><i class="fas fa-briefcase"></i> Projects</h3>
               </div>
               <div class="card-body table-responsive p-0">
@@ -228,7 +217,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <span class="info-box-icon"><i class="fas fa-tag"></i></span>
               <div class="info-box-content">
                 <span class="info-box-text">Today's Log</span>
-                <span class="info-box-number">0 <small>minutes</small></span>
+                <span class="info-box-number" data-src="log-today"><span name="log-today-value">0</span> <small>minutes</small></span>
               </div>
             </div>
 
@@ -276,7 +265,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <thead>
                         <tr>
                             <th style="width: 1%">
-                                ID
+                                #
                             </th>
                             <th style="width: 20%">
                                 Project Name
@@ -284,6 +273,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <th style="width: 30%">
                                 Logger
                             </th>
+                            
                             <th>
                                 Date
                             </th>
@@ -302,6 +292,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       </tr>
                     </tbody>
                 </table>
+              </div>
+              <div class="card-footer">
+                <div class="float-right text-sm text-secondary">
+                    Displaying top <strong>25</strong> logs temporarily.
+                </div>
               </div>
             </div> 
           </div>

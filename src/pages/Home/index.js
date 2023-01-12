@@ -1,15 +1,16 @@
 //@ts-check
-import application, { Application } from "./base/index.js";
-import DataPage from "./base/DataPage/index.js";
-import projectsTable from "./components/Home/ProjectsTable.js";
-import Project from "./base/db/models/Project.js";
+import application, { Application } from "../../base/index.js";
+import DataPage from "../../base/DataPage/index.js";
+import projectsTable from "./components/ProjectsTable.js";
+import Project from "../../base/db/models/Project.js";
 import { Chart } from "chart.js/auto";
-import activityRepo from "./base/db/caspio/dal/ActivityRepo.js";
-import projectRepo from "./base/db/caspio/dal/ProjectRepo.js";
-import activitiesTable from "./components/Home/ActivitiesTable.js";
-import User from "./base/db/models/User.js";
-import userRepo from "./base/db/caspio/dal/UserRepo.js";
-
+import activityRepo from "../../base/db/caspio/dal/ActivityRepo.js";
+import projectRepo from "../../base/db/caspio/dal/ProjectRepo.js";
+import activitiesTable from "./components/ActivitiesTable.js";
+import User from "../../base/db/models/User.js";
+import userRepo from "../../base/db/caspio/dal/UserRepo.js";
+import activityService from "../../base/db/caspio/service/ActivityService.js";
+import $ from "jquery";
 /**
  * DataPage Deployments
  */
@@ -127,7 +128,12 @@ const activitiesDataReadyHandler = function(dp, e){
           const chart = new Chart(container,config);
 
           //deploy Activities table
-          activitiesTable("table[data-src='activities-list'] > tbody",activityRepo.getAll())
+          activitiesTable("table[data-src='activities-list'] > tbody",activityRepo.getAll().slice(0,25))
+          
+          //set active hours
+          document.querySelector("[data-src='active-hours'] > span").innerHTML = Number((activityService.getTotalActiveHours() / 60)).toFixed(2)
+          //set log-today
+          document.querySelector("[data-src='log-today'] > span").innerHTML = Number((activityService.getLogToday())).toFixed(0)
     }
 }
 

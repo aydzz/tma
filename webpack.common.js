@@ -8,8 +8,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const wpCommonConfig = {
     entry: {
-        main: "./src/index.js",
-        // vendor: "./src/vendor.js"
+        main: "./src/pages/Home/index.js",
+        activity: "./src/pages/Activity/index.js"
     },
     resolve: {
         enforceExtension: false,
@@ -22,7 +22,7 @@ const wpCommonConfig = {
     },
     plugins:[
         new HtmlWebpackPlugin({
-            template: './src/index.html',
+            template: './src/pages/Home/home.html',
             filename:"index.html",
             inject: 'body',
             chunks: [
@@ -30,14 +30,14 @@ const wpCommonConfig = {
             ],
             minify: false
         }),
-        // new HtmlWebpackPlugin({
-        //     template: './src/hello.html',
-        //     filename:"vendor.html",
-        //     chunks: [
-        //         "vendor"
-        //     ],
-        //     inject: 'body',
-        // }),
+        new HtmlWebpackPlugin({
+            template: './src/pages/Activity/activity.html',
+            filename:"activity.html",
+            chunks: [
+                "activity"
+            ],
+            inject: 'body',
+        }),
     ],
     module:{
         rules: [

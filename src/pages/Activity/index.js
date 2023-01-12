@@ -1,0 +1,1 @@
+import application from "../../base/index.js";
