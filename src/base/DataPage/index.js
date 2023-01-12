@@ -1,4 +1,5 @@
 import logger from "../Logger.js";
+import DP_EVENTS from "../enums/DataPageEvents.js";
 
 const DEFAULT_OPTIONS = {
     deploy: false,
@@ -32,7 +33,6 @@ export default class DataPage{
                 
             }
             this.deploy(this.options.containerSel, this.options.params);
-            
         }
     }
     static getDPManagerInstance(appKey){
@@ -75,7 +75,12 @@ export default class DataPage{
     deploy(containerSel,paramString){
         let params = paramString || '';
         let dataPageScript = document.createElement("script");
-        let container = document.querySelector(containerSel);//should be specific selector
+        let container = document.querySelector(containerSel ?? this.options.containerSel);//should be specific selector
+        
+        if(!container){
+            throw new Error(`Container ${containerSel ?? this.options.containerSel} not found!`)
+        }
+
         dataPageScript.src = this.cbDataPagePrefix + this.appKey + '/emb' + params;
         
         container.innerHTML = '';
@@ -109,5 +114,9 @@ export default class DataPage{
                 callback(instance,e);
             })
         }
+    }
+    ready(callback){
+        const instance = this;
+        document.addEventListener(DP_EVENTS.DP_READY,callback)
     }
 }

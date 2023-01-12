@@ -271,10 +271,37 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <div class="card-header">
                 <h5 class="m-0">Project Activities</h5>
               </div>
-              <div class="card-body">
-                <div class="d-block w-100" data-dptype="data" id="cb-activities">
-
-                </div>
+              <div class="card-body p-0">
+                  <table class="table table-striped projects" data-src="activities-list">
+                    <thead>
+                        <tr>
+                            <th style="width: 1%">
+                                ID
+                            </th>
+                            <th style="width: 20%">
+                                Project Name
+                            </th>
+                            <th style="width: 30%">
+                                Logger
+                            </th>
+                            <th>
+                                Date
+                            </th>
+                            <th style="width: 8%" class="text-center">
+                                Time
+                            </th>
+                            <th style="width: 20%">
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td colspan="6" class="text-center">
+                          No records found...
+                        </td>
+                      </tr>
+                    </tbody>
+                </table>
               </div>
             </div> 
           </div>
@@ -284,6 +311,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
+    <div class="d-none w-100" data-dptype="data" id="cb-activities">
+
+    </div>
   </div>
   <!-- /.content-wrapper -->
 

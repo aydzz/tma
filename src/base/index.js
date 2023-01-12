@@ -6,7 +6,8 @@
 
 import DataPage from "./DataPage/index.js";
 import logger from "./Logger.js";
-import projectRepo from "./db/local/dal/ProjectRepo.js";
+import projectRepo from "./db/caspio/dal/ProjectRepo.js";
+import userRepo from "./db/caspio/dal/UserRepo.js";
 
 const ACCOUNT_ID = "c1hbp155";
 const APPKEY_PREFIX = "72d1b000";
@@ -48,6 +49,7 @@ export class Application{
                     if(window.mainDataRawAll){
                         instance.mainDataRawAll = window.mainDataRawAll;
                         projectRepo.setRawData(mainDataRawAll)
+                        userRepo.setRawData(mainDataRawAll)
                     }else{
                         throw new Error("Main Data was not loaded correctly.");
                     }
