@@ -8,6 +8,9 @@ import DataPage from "./DataPage/index.js";
 import logger from "./Logger.js";
 import projectRepo from "./db/caspio/dal/ProjectRepo.js";
 import userRepo from "./db/caspio/dal/UserRepo.js";
+import Project from "./db/models/Project.js";
+import User from "./db/models/User.js";
+
 
 const ACCOUNT_ID = "c1hbp155";
 const APPKEY_PREFIX = "72d1b000";
@@ -27,6 +30,7 @@ export class Application{
         this.mainDataRawAll = null;
         this.initFlags = {
             mainTablesLoaded: false,
+            mainReposReady: false
         }
         this.appReady = false;
         this.settings = {
@@ -53,7 +57,33 @@ export class Application{
                     }else{
                         throw new Error("Main Data was not loaded correctly.");
                     }
+
+                    /**
+                     * Setting main repos
+                     */
+                    const projectList = application.mainDataRawAll["data"].filter(record =>{
+                        if(Project.fromRecord(record).id){
+                            return true;
+                        }
+                        return false;
+                    }).map(record =>{
+                        return Project.fromRecord(record);
+                    })
+                
+                    const userList = application.mainDataRawAll["data"].filter(record =>{
+                        if(User.fromRecord(record).id){
+                            return true;
+                        }
+                        return false;
+                    }).map(record =>{
+                        return User.fromRecord(record);
+                    });
+                
+                    projectRepo.setData(projectList);
+                    userRepo.setData(userList);
+                    
                     instance.initFlags["mainTablesLoaded"] = true;
+                    instance.initFlags["mainReposReady"] = true;
                     instance._initDispatcher();
                 }
             });

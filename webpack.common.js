@@ -2,9 +2,17 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import { fileURLToPath } from 'url';
 import path from 'path';
 import { dirname } from 'path';
+import webpack from "webpack";
+import dotenv from "dotenv"
+
 
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+
+const newDotEnv = dotenv.config({
+    path: path.join(__dirname,".env")
+})
+
 
 const wpCommonConfig = {
     entry: {
@@ -21,6 +29,9 @@ const wpCommonConfig = {
         mainFiles: ['index'],
     },
     plugins:[
+        new webpack.DefinePlugin({
+            "process.env": newDotEnv.parsed
+        }),
         new HtmlWebpackPlugin({
             template: './src/pages/Home/home.html',
             filename:"index.html",

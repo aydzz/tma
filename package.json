@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server  --config webpack.dev.js --open",
+    "serve": "npx webpack serve --config webpack.dev.js --open",
     "build": "webpack  --config webpack.prod.js",
+    "deploy": "firebase deploy --only hosting:adzzpm",
     "sass": "sass ./src/assets/scss/application.scss ./src/assets/css/application.css --watch"
   },
   "repository": {
@@ -22,6 +24,7 @@
   "dependencies": {
     "admin-lte": "3.2",
     "chart.js": "^4.1.1",
+    "dotenv": "^16.0.3",
     "firebase": "^9.15.0",
     "moment": "^2.29.4",
     "path": "^0.12.7"

@@ -16,7 +16,14 @@ const wpDevConfig = merge(wpCommonConfig,{
         filename: '[name].[contenthash].js',
         path: path.resolve(__dirname, "dist"),
         clean: true,
-    }
+    },
+    devServer: {
+        static: {
+          directory: path.join(__dirname, 'public'),
+        },
+        compress: true,
+        port: 9000,
+    },
 })
 
 export default wpDevConfig;

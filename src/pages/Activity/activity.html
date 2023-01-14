@@ -15,6 +15,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="https://kit.fontawesome.com/e80d1b975d.js" crossorigin="anonymous"></script>
   <!-- Theme style -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
+  <!--- Application styling-->
+  <link rel="stylesheet" href="../../assets/css/application.css"/>
+  <link rel="icon" href="../../assets/logo-themed.svg"/>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -43,6 +46,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <i class="fas fa-th-large"></i>
         </a>
       </li>
+      <li name="top-nav-user" class="nav-item dropdown d-none">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="far fa-user"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <span class="dropdown-header">User</span>
+          <div class="dropdown-divider"></div>
+          <a href="https://c1hbp155.caspio.com/folderlogout" class="dropdown-item">
+            <i class="fas fa-sign-out-alt mr-2"></i> Logout
+          </a>
+        </div>
+      </li>
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -51,8 +66,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="/" class="brand-link bg-white">
-      <img src="./../../assets/logo.svg" alt="adzz.tma Logo" class="brand-image img-circle elevation-3 p-2 bg-black" style="opacity: 1">
-      <span class="brand-text font-weight-light">adzz.</span><strong>tma</strong>
+      <img src="./../../assets/logo.svg" alt="adzz.pm Logo" class="brand-image img-circle elevation-3 p-2 bg-black" style="opacity: 1">
+      <span class="brand-text font-weight-light">adzz.</span><strong>pm</strong>
     </a>
 
     <!-- Sidebar -->
@@ -129,10 +144,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <div class="col-lg-6">
             <div class="card">
               <div class="card-header">
-                <h5 class="m-0">Add Activity</h5>
+                <h5 class="m-0"><i class="fas fa-clipboard-check"></i> Add Activity</h5>
               </div>
-              <div class="card-body">
-                  
+              <div class="card-body w-100 m-auto">
+                <script type="text/javascript" src="https://c1hbp155.caspio.com/dp/72d1b000bf607d82737f4a038191/emb"></script>
               </div>
             </div>
           </div>
@@ -140,12 +155,47 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <div class="col-lg-6">
             <div class="card card-primary card-outline">
               <div class="card-header">
-                <h5 class="m-0">Logs</h5>
+                <h5 class="m-0"><i class="fas fa-clipboard-list"></i> Project Activities</h5>
               </div>
-              <div class="card-body">
-                
+              <div class="card-body p-0">
+                  <table class="table table-striped projects" data-src="activities-list">
+                    <thead>
+                        <tr>
+                            <th style="width: 1%">
+                                #
+                            </th>
+                            <th style="width: 20%">
+                                Project Name
+                            </th>
+                            <th style="width: 30%">
+                                Logger
+                            </th>
+                            
+                            <th>
+                                Date
+                            </th>
+                            <th style="width: 8%" class="text-center">
+                                Time
+                            </th>
+                            <th style="width: 20%">
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td colspan="6" class="text-center">
+                          No records found...
+                        </td>
+                      </tr>
+                    </tbody>
+                </table>
               </div>
-            </div>
+              <div class="card-footer">
+                <div class="float-right text-sm text-secondary">
+                    Displaying <strong data-src="log-shown-count">0</strong> out of <span data-src="log-total-count">0</span> logs.
+                </div>
+              </div>
+            </div> 
           </div>
           <!-- /.col-md-6 -->
         </div>
@@ -153,6 +203,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
+    <div class="d-none w-100" data-dptype="data" id="cb-activities">
+
+    </div>
   </div>
   <!-- /.content-wrapper -->
 
@@ -182,7 +235,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <footer class="main-footer">
     <!-- To the right -->
     <div class="float-right d-none d-sm-inline">
-      Hello World
+      Project Management v1.2.3
     </div>
     <!-- Default to the left -->
     <strong>Copyright &copy; 2022 <a href="/">adzz</a>.</strong> All rights reserved.

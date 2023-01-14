@@ -46,7 +46,6 @@ const activitiesDataDP = new DataPage(
  * - For now will leave this as is.
  */
 activityChartDP.on("DataPageReady",function(datapage,e){
-    console.log(activityChartDP.getDPObjectInstance().clientQueryString)
     if(!activityChartDP.getDPObjectInstance().clientQueryString){
         //@ts-ignore
         activityChartDP.getDPObjectInstance().clientQueryString = `daysBefore=${document.querySelector(application.settings.home.activityChartRange.selector).value}`
@@ -157,32 +156,12 @@ const applicationReadyHandler = function(application){
     /**
      * Render Projects Table Card
      */
-    const projectList = application.mainDataRawAll["data"].filter(record =>{
-        if(Project.fromRecord(record).id){
-            return true;
-        }
-        return false;
-    }).map(record =>{
-        return Project.fromRecord(record);
-    })
-
-    const userList = application.mainDataRawAll["data"].filter(record =>{
-        if(User.fromRecord(record).id){
-            return true;
-        }
-        return false;
-    }).map(record =>{
-        return User.fromRecord(record);
-    });
-
-    projectRepo.setData(projectList);
-    userRepo.setData(userList);
-    projectsTable("table[data-src='project-list'] > tbody", projectList);
+    projectsTable("table[data-src='project-list'] > tbody", projectRepo.getAll());
 
     /**
      * Render Counts in InfoCards
      */
-    document.querySelector("[data-src='projects']").textContent = projectList.length;
+    document.querySelector("[data-src='projects']").textContent = projectRepo.getAll().length.toString();
     document.querySelector("[data-src='activity-previous-days']").textContent = document.querySelector(application.settings.home.activityChartRange.selector).value;
     
 }

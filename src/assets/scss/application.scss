@@ -11,5 +11,17 @@ svg.highcharts-root{
    width: 100% !important; 
 }
 
+form[action*="https://c1hbp155.caspio.com"] div,
+form[action*="https://c1hbp155.caspio.com"] div section{
+    width: 100%;
+}
+.cbFormLabelCell > label{
+    margin-bottom: 0px;
+} 
+
+div[id^='cbOuterAjaxCtnr'] table{
+    width: 100%
+}
+
 
   
