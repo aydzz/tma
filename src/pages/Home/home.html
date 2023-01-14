@@ -17,6 +17,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css"/>
   <!--- Application styling-->
   <link rel="stylesheet" href="../../assets/css/application.css"/>
+  <link rel="icon" href="../../assets/logo-themed.svg"/>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -72,7 +73,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </p>
             </a>
           </li>
-          <li class="nav-item menu-open">
+          <li class="nav-item">
+            <a href="activity.html" class="nav-link">
+              <i class="nav-icon fas fa-clipboard-list"></i>
+              <p>
+                Activity
+              </p>
+            </a>
+          </li>
+          <!-- <li class="nav-item menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -88,7 +97,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </li>
             </ul>
-          </li>
+          </li> -->
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -223,7 +232,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Project Logs</h3>
+                <h3 class="card-title"><i class="fas fa-chart-pie"></i> Project Logs</h3>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -258,7 +267,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <div class="col-lg-12">
             <div class="card card-primary card-outline">
               <div class="card-header">
-                <h5 class="m-0">Project Activities</h5>
+                <h5 class="m-0"><i class="fas fa-clipboard-list"></i> Project Activities</h5>
               </div>
               <div class="card-body p-0">
                   <table class="table table-striped projects" data-src="activities-list">
@@ -295,7 +304,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </div>
               <div class="card-footer">
                 <div class="float-right text-sm text-secondary">
-                    Displaying top <strong>25</strong> logs temporarily.
+                    Displaying top <strong data-src="log-shown-count">0</strong> out of <span data-src="log-total-count">0</span> logs.
                 </div>
               </div>
             </div> 

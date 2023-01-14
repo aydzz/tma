@@ -46,8 +46,13 @@ const activitiesDataDP = new DataPage(
  * - For now will leave this as is.
  */
 activityChartDP.on("DataPageReady",function(datapage,e){
+    console.log(activityChartDP.getDPObjectInstance().clientQueryString)
     if(!activityChartDP.getDPObjectInstance().clientQueryString){
         //@ts-ignore
+        activityChartDP.getDPObjectInstance().clientQueryString = `daysBefore=${document.querySelector(application.settings.home.activityChartRange.selector).value}`
+        activityChartDP.refresh();
+    }else{
+        //this is redundant but will put these lines for now
         activityChartDP.getDPObjectInstance().clientQueryString = `daysBefore=${document.querySelector(application.settings.home.activityChartRange.selector).value}`
         activityChartDP.refresh();
     }
@@ -128,12 +133,15 @@ const activitiesDataReadyHandler = function(dp, e){
           const chart = new Chart(container,config);
 
           //deploy Activities table
-          activitiesTable("table[data-src='activities-list'] > tbody",activityRepo.getAll().slice(0,25))
+          activitiesTable("table[data-src='activities-list'] > tbody",activityRepo.getAll().slice(0,15))
           
           //set active hours
           document.querySelector("[data-src='active-hours'] > span").innerHTML = Number((activityService.getTotalActiveHours() / 60)).toFixed(2)
           //set log-today
-          document.querySelector("[data-src='log-today'] > span").innerHTML = Number((activityService.getLogToday())).toFixed(0)
+          document.querySelector("[data-src='log-today'] > span").innerHTML = Number((activityService.getLogToday())).toFixed(0);
+          //set logs shown
+          document.querySelector("[data-src='log-shown-count']").innerHTML = activityRepo.getAll().slice(0,15).length.toString();
+          document.querySelector("[data-src='log-total-count']").innerHTML = activityRepo.getAll().length.toString();
     }
 }
 
