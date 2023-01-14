@@ -1,0 +1,40 @@
+{
+    "data": [
+        {
+            "ID": 1,
+            "Category_ID": 2,
+            "Type": "System Design",
+            "Description": "Databasing, UI / UX Design of an Item"
+        },
+        {
+            "ID": 2,
+            "Category_ID": 2,
+            "Type": "Enhancement",
+            "Description": "Implementation of the updates  in the current implementation"
+        },
+        {
+            "ID": 3,
+            "Category_ID": 2,
+            "Type": "Bug",
+            "Description": "Bug Fixing"
+        },
+        {
+            "ID": 4,
+            "Category_ID": 2,
+            "Type": "Unit Testing",
+            "Description": "Testing of implementations"
+        },
+        {
+            "ID": 5,
+            "Category_ID": 2,
+            "Type": "Implementation",
+            "Description": "Activities related to coding, programming of the solution option"
+        },
+        {
+            "ID": 6,
+            "Category_ID": 2,
+            "Type": "Analysis",
+            "Description": "Solution Option Analysis, Checks for Workarounds"
+        }  
+    ]
+}
