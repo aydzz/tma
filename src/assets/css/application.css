@@ -24,4 +24,8 @@ div[id^=cbOuterAjaxCtnr] table {
   width: 100%;
 }
 
+select:disabled {
+  appearance: none;
+}
+
 /*# sourceMappingURL=application.css.map */

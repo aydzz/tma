@@ -10,6 +10,8 @@ import projectRepo from "./db/caspio/dal/ProjectRepo.js";
 import userRepo from "./db/caspio/dal/UserRepo.js";
 import Project from "./db/models/Project.js";
 import User from "./db/models/User.js";
+import { v4 as uuid } from 'uuid';
+import Modal from "../components/Modal/index.js";
 
 
 const ACCOUNT_ID = "c1hbp155";
@@ -19,8 +21,9 @@ const CURRENT_PAGE = window.location.pathname;
 
 const MAIN_TABLES_DP = "9edb03a3fb724456806c";
 
-export class Application{
+export class Application{ 
    constructor(){
+        this.uuid = uuid(); //instance uuid ( use in component identification)
         this.accountID = ACCOUNT_ID;
         this.appkeyPrefix = APPKEY_PREFIX;
         this.logoutLink = LOGOUT_LINK;
@@ -41,6 +44,7 @@ export class Application{
                     }
             }
         }
+        this.appModal = new Modal("body")
 
         //bindings
         this._initDispatcher = this._initDispatcher.bind(this);

@@ -30,7 +30,7 @@ const activitiesDataReadyHandler = function(dp, e){
         //@ts-ignore
         activityRepo.setData(window.activities);
           //deploy Activities table
-          activitiesTable("table[data-src='activities-list'] > tbody",activityRepo.getAll().slice(0,15))
+          activitiesTable("table[data-src='activities-list'] > tbody",activityRepo.getAll().slice(0,15), {showActions: true})
           
           //set logs shown
           document.querySelector("[data-src='log-shown-count']").innerHTML = activityRepo.getAll().slice(0,15).length.toString();
