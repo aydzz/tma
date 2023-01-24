@@ -1,10 +1,10 @@
-import Activity from "../../../base/db/models/Activity.js";
-import projectRepo from "../../../base/db/caspio/dal/ProjectRepo.js";
+import Activity from "../../base/db/models/Activity.js";
+import projectRepo from "../../base/db/caspio/dal/ProjectRepo.js";
 import $ from "jquery";
-import userRepo from "../../../base/db/caspio/dal/UserRepo.js";
-import logger from "../../../base/Logger.js";
+import userRepo from "../../base/db/caspio/dal/UserRepo.js";
+import logger from "../../base/Logger.js";
 import moment from "moment";
-import application from "../../../base/index.js";
+import application from "../../base/index.js";
 const DEFAULT_TABLE_OPTIONS = {
     showIndex: true,
     showActions: false
