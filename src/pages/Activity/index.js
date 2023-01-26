@@ -1,8 +1,8 @@
 import application from "../../base/index.js";
 import DataPage from "../../base/DataPage/index.js";
 import activityRepo from "../../base/db/caspio/dal/ActivityRepo.js";
-import activitiesTable from "../Home/components/ActivitiesTable.js";
-
+import activitiesTable from "../../components/Table/ActivitiesTable.js";
+import { testFooterPaginator } from "../../components/Table/Paginator/FooterPaginator.js";
 
 const activitiesDataDP = new DataPage(
     application.accountID,
@@ -35,6 +35,8 @@ const activitiesDataReadyHandler = function(dp, e){
           //set logs shown
           document.querySelector("[data-src='log-shown-count']").innerHTML = activityRepo.getAll().slice(0,15).length.toString();
           document.querySelector("[data-src='log-total-count']").innerHTML = activityRepo.getAll().length.toString();
+          $("div[name='paginator-container']").append(testFooterPaginator.build().mount().render().component);
+          
     }
 }
 

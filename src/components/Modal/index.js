@@ -122,7 +122,7 @@ export default class Modal{
     }
     init(){
         const modal =  $(`#${this.elementID}`).modal({
-            keyboard: false,
+            keyboard: true,
             show: false,
         });
         this.modal = modal;
