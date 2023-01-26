@@ -57,7 +57,7 @@ const tableRow = function(activity, options){
     <tr style="border-left: 5px solid ${projectRepo.getBy("RID",activity.projectRID).colorHex}">
         ${opts.showIndex ? 
             `<td>
-                ${opts.rowIndex}
+                ${activity.id}
             </td>` : '' // @TODO: handle this later
         }
         <td>
