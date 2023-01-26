@@ -35,7 +35,7 @@ const activitiesDataReadyHandler = function(dp, e){
           //set logs shown
           document.querySelector("[data-src='log-shown-count']").innerHTML = activityRepo.getAll().slice(0,15).length.toString();
           document.querySelector("[data-src='log-total-count']").innerHTML = activityRepo.getAll().length.toString();
-          $("div[name='paginator-container']").append(testFooterPaginator.build().init().component);
+          $("div[name='paginator-container']").append(testFooterPaginator.build().mount().render().component);
           
     }
 }
