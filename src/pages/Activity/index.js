@@ -2,7 +2,10 @@ import application from "../../base/index.js";
 import DataPage from "../../base/DataPage/index.js";
 import activityRepo from "../../base/db/caspio/dal/ActivityRepo.js";
 import activitiesTable from "../../components/Table/ActivitiesTable.js";
-import { testFooterPaginator } from "../../components/Table/Paginator/FooterPaginator.js";
+import { paginateList } from "../../base/Functions.js";
+import FooterPaginator from "../../../src/components/Table/Paginator/FooterPaginator.js";
+import { Application } from "../../base/index.js";
+import logger from "../../base/Logger.js";
 
 const activitiesDataDP = new DataPage(
     application.accountID,
@@ -16,6 +19,10 @@ const activitiesDataDP = new DataPage(
     }
 );
 
+const paginator = new FooterPaginator(
+    "",0,5,1
+)
+
 /**
  * Home Page ( Index ) app ready effects
  * @param {Application} application 
@@ -28,14 +35,31 @@ const activitiesDataReadyHandler = function(dp, e){
     //@ts-ignore
     if(e.detail.appKey === dp.appKeyPrefix + dp.appKey){
         //@ts-ignore
-        activityRepo.setData(window.activities);
-          //deploy Activities table
-          activitiesTable("table[data-src='activities-list'] > tbody",activityRepo.getAll().slice(0,15), {showActions: true})
-          
-          //set logs shown
-          document.querySelector("[data-src='log-shown-count']").innerHTML = activityRepo.getAll().slice(0,15).length.toString();
-          document.querySelector("[data-src='log-total-count']").innerHTML = activityRepo.getAll().length.toString();
-          $("div[name='paginator-container']").append(testFooterPaginator.build().mount().render().component);
+        activityRepo.setData(window.activities);//@FIX: activityRepo.getAll() is empty even if the window.activities exists
+        const activities = activityRepo.getAll()
+        
+        const paginatedList = paginateList(activityRepo.getAll(),5);
+        
+        paginator.totalCount = window.activities.length;
+
+        //deploy Activities table
+        activitiesTable("table[data-src='activities-list'] > tbody",paginatedList[0], {showActions: true})
+        
+        //set logs shown
+        document.querySelector("[data-src='log-shown-count']").innerHTML = window.activities.length.toString();
+        document.querySelector("[data-src='log-total-count']").innerHTML = window.activities.length.toString();
+
+
+        if(!$("div[name='paginator-container']").find(".pagination").length){
+            $("div[name='paginator-container']").append(paginator.build().mount().render().component);
+        }
+        const paginationEffect = function(p){
+            $("table[data-src='activities-list'] > tbody").text("");//@Optimize: clear contents
+            activitiesTable("table[data-src='activities-list'] > tbody",paginatedList[p.currentPage-1], {showActions: true})
+        }
+        paginator.addNextEffect(paginationEffect);
+        paginator.addPrevEffect(paginationEffect);
+        paginator.addSkipEffect(paginationEffect);
           
     }
 }

@@ -17,6 +17,9 @@ export default class FooterPaginator{
         this.partitionSize = partitionSize;
         this.currentPage = currentPage;
         this.offset = 0;
+        this.nextEffects = [];
+        this.prevEffects = [];
+        this.skipEffects = [];
         this.options = Object.assign(options, DEFAULT_OPTIONS);
     }
 
@@ -63,6 +66,7 @@ export default class FooterPaginator{
             return function(e){
                 e.preventDefault();
                 instance.currentPage = i+1;
+                instance.skip()
                 logger.log("Page Button was clicked: " + instance.currentPage)
                 instance.render();//rerender
             }
@@ -123,7 +127,7 @@ export default class FooterPaginator{
                         instance.offset--;
                     }
                 }
-                logger.log("Prev Button was clicked" + instance.currentPage);
+                logger.log("Prev Button was clicked: " + instance.currentPage);
                 instance.render();//rerender;
             }
         }
@@ -153,7 +157,7 @@ export default class FooterPaginator{
                         instance.offset = instance.currentPage - instance.options.maximumPage
                     }
                 }
-                logger.log("Next Button was clicked" + instance.currentPage);
+                logger.log("Next Button was clicked: " + instance.currentPage);
                 instance.render();//rerender;
             }
         }
@@ -178,16 +182,41 @@ export default class FooterPaginator{
         return this;
     }
     next(callback){
+        const instance = this;
         this.currentPage++;
-        //some effects here...
-
+        this.render()
+        // callback(this);
+        this.nextEffects.forEach(function(callback){
+            callback(instance);
+        })
         return this;
     }
-    prev(call){
+    prev(callback){
+        const instance = this;
         this.currentPage--;
-        //some effects here...
-        
+        this.render()
+        // callback(this);
+        this.prevEffects.forEach(function(callback){
+            callback(instance);
+        })
         return this;
+    }
+    skip(callback){
+        const instance = this;
+        this.render()
+        this.skipEffects.forEach(function(callback){
+            callback(instance);
+        });
+        return this;
+    }
+    addNextEffect(callback){
+        this.nextEffects.push(callback);
+    }
+    addPrevEffect(callback){
+        this.prevEffects.push(callback);
+    }
+    addSkipEffect(callback){
+        this.skipEffects.push(callback);
     }
 }
 
