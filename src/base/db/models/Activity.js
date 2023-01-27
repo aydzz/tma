@@ -39,7 +39,10 @@ export default class Activity{
         createdDate,
         lastUpdatedDate,
         createdByUserRID,
-        lastUpdatedByUserRID
+        lastUpdatedByUserRID,
+
+        isFullyTracked,
+        valuePS
     ){
         this.id = stringToNumber(id)
         this.rid = rid
@@ -57,6 +60,9 @@ export default class Activity{
         this.lastUpdatedDate = lastUpdatedDate
         this.createdByUserRID = createdByUserRID
         this.lastUpdatedByUserRID = lastUpdatedByUserRID
+
+        this.isFullyTracked = isFullyTracked === "Yes" ? true : false;
+        this.valuePS = stringToNumber(valuePS)
     }
     /**
      * Convers PM_Project record to usable Project Object
@@ -80,7 +86,9 @@ export default class Activity{
             record[TABLE_NAME + "_" + "Created_Date"],
             record[TABLE_NAME + "_" + "Last_Updated_Date"],
             record[TABLE_NAME + "_" + "Created_By_User_RID"],
-            record[TABLE_NAME + "_" + "Last_Updated_By_User_RID"]
+            record[TABLE_NAME + "_" + "Last_Updated_By_User_RID"],
+            record[TABLE_NAME + "_" + "Is_Fully_Tracked"],
+            record[TABLE_NAME + "_" + "Value_PS"]
         )
     }
 }

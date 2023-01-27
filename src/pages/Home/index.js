@@ -6,7 +6,7 @@ import Project from "../../base/db/models/Project.js";
 import { Chart } from "chart.js/auto";
 import activityRepo from "../../base/db/caspio/dal/ActivityRepo.js";
 import projectRepo from "../../base/db/caspio/dal/ProjectRepo.js";
-import activitiesTable from "./components/ActivitiesTable.js";
+import activitiesTable from "../../components/Table/ActivitiesTable.js";
 import User from "../../base/db/models/User.js";
 import userRepo from "../../base/db/caspio/dal/UserRepo.js";
 import activityService from "../../base/db/caspio/service/ActivityService.js";
