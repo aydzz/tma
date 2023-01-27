@@ -12,6 +12,7 @@ import Project from "./db/models/Project.js";
 import User from "./db/models/User.js";
 import { v4 as uuid } from 'uuid';
 import Modal from "../components/Modal/index.js";
+import $ from "jquery";
 
 
 const ACCOUNT_ID = "c1hbp155";
@@ -20,6 +21,8 @@ const LOGOUT_LINK = `https://${ACCOUNT_ID}.caspio.com/folderlogout"`;
 const CURRENT_PAGE = window.location.pathname;
 
 const MAIN_TABLES_DP = "9edb03a3fb724456806c";
+
+const APP_VERSION = "v1.2.9";
 
 export class Application{ 
    constructor(){
@@ -52,6 +55,7 @@ export class Application{
         //execs
         {
             const instance = this;
+            $("[data-src='app-version']").text(APP_VERSION);
             document.addEventListener("DataPageReady",function(e){
                 if(e.detail.appKey ===  instance.appkeyPrefix + MAIN_TABLES_DP && !instance.appReady){
                     if(window.mainDataRawAll){

@@ -4,7 +4,7 @@ import activityRepo from "../../base/db/caspio/dal/ActivityRepo.js";
 import activitiesTable from "../../components/Table/ActivitiesTable.js";
 import { paginateList } from "../../base/Functions.js";
 import FooterPaginator from "../../../src/components/Table/Paginator/FooterPaginator.js";
-import { Application } from "../../../__src__/base/index.js";
+import { Application } from "../../base/index.js";
 import logger from "../../base/Logger.js";
 
 const activitiesDataDP = new DataPage(
@@ -57,8 +57,9 @@ const activitiesDataReadyHandler = function(dp, e){
             $("table[data-src='activities-list'] > tbody").text("");//@Optimize: clear contents
             activitiesTable("table[data-src='activities-list'] > tbody",paginatedList[p.currentPage-1], {showActions: true})
         }
-        paginator.addNextEffect(paginationEffect)
-        paginator.addPrevEffect(paginationEffect)
+        paginator.addNextEffect(paginationEffect);
+        paginator.addPrevEffect(paginationEffect);
+        paginator.addSkipEffect(paginationEffect);
           
     }
 }
